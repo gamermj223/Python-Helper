@@ -3,6 +3,7 @@ import random
 
 running = True
 greeted = False
+user_greeting_back = False
 user = ""
 
 def get_commands():
@@ -13,6 +14,10 @@ def get_commands():
     greeted = commands.greeted_true() #revices if greeted is True/False.
     
     print(greeting) #this prints the welocme greeting.
+
+    if greeted == True:
+        user_greeting_back = True
+        return user, user_greeting_back
 
 while running:
     
