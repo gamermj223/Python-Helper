@@ -1,3 +1,10 @@
 import commands
+import random
 
-print(commands.ai_greeting_first())
+running = True
+
+while running:
+
+    user = input("You: ")
+
+    commands.ai_greeting_first()
