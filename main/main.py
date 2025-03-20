@@ -1,5 +1,6 @@
 import time
 import random
+import testing.commands as commands
 
 username = "You"
 ai_name = "Bob"
