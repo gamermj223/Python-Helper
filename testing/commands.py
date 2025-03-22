@@ -1,5 +1,6 @@
 from words import greetings
 import random
+import time
 
 sent = False
 greeted = False
