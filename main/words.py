@@ -8,5 +8,5 @@ greetings = {
 }
 
 comands = {
-    
+    "time": ["will be in"]
 }

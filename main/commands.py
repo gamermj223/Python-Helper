@@ -2,6 +2,7 @@ import words
 import random
 import time
 import datetime
+import sys
 
 ai_name = "PyBuddy"
 ai_cou = ": "
@@ -27,7 +28,7 @@ def user_greeting_first(user):
 def greeting_responded(user):
     global greeted_first, greeting_done   # Access the global variable
 
-    if sent == True and user in words.greetings["user_responding_words_good"]:
+    if sent == True and greeting_done == False and user in words.greetings["user_responding_words_good"]:
         print(ai_print+ random.choice(words.greetings["ai_responed"]))  # Respond randomly
         greeting_done = True
 
@@ -42,13 +43,14 @@ def ai_greeting_first():
         greeted_first_second = True
 
 def tell_time(user):
-    global greeting_done
-    if greeting_done == True and user in "time":
+    global greeting_done, now
+    if greeting_done == True and user in "time" and user in words.comands["time"]:
         print(ai_print + "The time is " + now.strftime("%H:%M"))
-        
+    elif greeting_done == True and user in "time":
+        print(ai_print + "The time is " + now.strftime("%H:%M"))
+
 def exit(user):
 
     if user == "exit":
-        running = False
-        print("exiting")
-        return running
+        print(ai_print + "exiting the program")
+        sys.exit()
