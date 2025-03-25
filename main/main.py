@@ -1,24 +1,23 @@
-import time
+import commands
 import random
-import testing.commands as commands
+import words
 
-username = "You"
-ai_name = "Bob"
-when_sending_message = ": "
-active = True
-user_asked_exit = False
+running = True
+user_greeting_back = False
+ai_name = "PyBuddy"
+ai_cou = ": "
+user = ""
 
-def exit():
-    global user_asked_exit
-    if user == "exit":
-        user_asked_exit = True
-        print(ai_name+when_sending_message+"Are you sure?")
+running1 = True
+
+while running:
     
-    if user_asked_exit == True:
-        active = False
+    commands.ai_greeting_first()
 
-while active == True:
 
-    user = input(username+when_sending_message)
+    user = input("You: ").lower()
 
-    exit()
+    commands.greeting_responded(user)
+    commands.user_greeting_first(user)
+    commands.tell_time(user)
+    commands.exit(user)
