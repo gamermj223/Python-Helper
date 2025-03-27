@@ -52,12 +52,7 @@ def tell_time(user):
 def exit(user):
 
     if user == "exit":
-<<<<<<< HEAD
         running = False
         print("exiting")
-        return running
-
-=======
         print(ai_print + "exiting the program")
         sys.exit()
->>>>>>> 870bf544495e565deb15fce470702caefad3dfbf
