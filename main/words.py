@@ -6,3 +6,7 @@ greetings = {
     "user_waking_up_bot": ["boot up", "you alive", "wake up"],
     "bot_waking_up": ["Hello, Sir. How is your day going."]
 }
+
+comands = {
+    "time": ["will be in"]
+}
