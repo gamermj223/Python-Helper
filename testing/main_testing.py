@@ -1,8 +1,3 @@
-import re 
-
-def find_time(user):
-    match = re.search(r"(\d+)\s*(hours?|minutes?|seconds?)", user, re.IGNORECASE)
-    print(match)
-
-user = input()
-find_time(user)
+string = "12, 34, 56"
+parts, part1, part2 = string.split(',')  # Split using the comma
+print(parts, part1, part2)

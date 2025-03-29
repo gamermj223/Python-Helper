@@ -68,3 +68,7 @@ def exit(user):
         print("exiting")
         print(ai_print + "exiting the program")
         sys.exit()
+
+
+def times(user):
+    pass

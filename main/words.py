@@ -8,5 +8,6 @@ greetings = {
 }
 
 comands = {
-    "time": ["will be in"]
+    "time": ["will be in"],
+    "times": ["what is", "times"]
 }
