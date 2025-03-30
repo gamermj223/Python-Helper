@@ -1,21 +1,21 @@
 import words
 import random
 import time
-import datetime
+from datetime import datetime
 import sys
 import pyttsx3
+
+
 
 ai_name = "PyBuddy"
 ai_cou = ": "
 user = ""
 ai_print = ai_name + ai_cou
 
-now = datetime.datetime.now()
-
 greeted_first = False
 greeted_first_second = False
 sent = False
-send_first_greet = random.randint(2,2)
+send_first_greet = random.randint(1,2)
 greeting_done = False
 
 def speek(chatbot):
@@ -32,17 +32,20 @@ def user_greeting_first(user):
     global sent, greeted_first, send_first_greet, greeted_first_second
 
     if send_first_greet == 2 and sent == False and greeted_first_second == True:
-        if user in words.greetings["user_waking_up_bot"]:
-            print(ai_print + random.choice(words.greetings["bot_waking_up"]))
+        if any(word in user.lower() for word in words.greetings["user_waking_up_bot"]):
             chatbot = random.choice(words.greetings["bot_waking_up"])
+            print(ai_print + chatbot)
             speek(chatbot)
             sent = True
 
 def greeting_responded(user):
     global greeted_first, greeting_done   # Access the global variable
 
-    if sent == True and greeting_done == False and user in words.greetings["user_responding_words_good"]:
-        print(ai_print+ random.choice(words.greetings["ai_responed"]))  # Respond randomly
+    if sent == True and greeting_done == False and any(word in user.lower() for word in words.greetings["user_responding_words_good"]):
+        chatbot = random.choice(words.greetings["ai_responed"])
+        print(ai_print + chatbot)  # Respond randomly  
+        speek(chatbot)
+
         greeting_done = True
 
 def ai_greeting_first():
@@ -51,16 +54,25 @@ def ai_greeting_first():
     if send_first_greet == 1 and not sent:
         send_first_greet = True
         sent = True
-        print(ai_print + random.choice(words.greetings['greeting']))
+        chatbot = random.choice(words.greetings['greeting'])
+        print(ai_print + chatbot)
+        speek(chatbot)
     elif send_first_greet == 2:
         greeted_first_second = True
 
 def tell_time(user):
     global greeting_done, now
-    if greeting_done == True and user in "time" and user in words.comands["time"]:
-        print(ai_print + "The time is " + now.strftime("%H:%M"))
-    elif greeting_done == True and user in "time":
-        print(ai_print + "The time is " + now.strftime("%H:%M"))
+    if greeting_done == True and any(word in user.lower() for word in words.comands["time"]):
+        current = datetime.now().strftime("%I:%M %p")
+        if any(word in user.lower() for word in words.comands["time_respond_words1"]):
+            chatbot = random.choice(words.comands["time_respond1"]) + " the time is " + current
+            print(ai_print + chatbot)
+            speek(chatbot)
+        else:
+            chatbot = "The time is " + current
+            print(ai_print + chatbot)
+            speek(chatbot)
+
 
 def exit(user):
 
@@ -71,4 +83,5 @@ def exit(user):
 
 
 def times(user):
-    pass
+    if user in words.comands["times"]:
+        print("yes")
