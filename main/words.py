@@ -8,8 +8,8 @@ greetings = {
 }
 
 comands = {
-    "time": ["what is the time", " what time it is"],
+    "time": ["what is the time", "what time is it"],
     "time_respond_words1": ["do you know"],
     "time_respond1": ["I do know what time it is,"],
-    "times": ["what is", "times"]
+    "math": ["what is", "times"]
 }

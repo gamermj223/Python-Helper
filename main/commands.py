@@ -4,8 +4,7 @@ import time
 from datetime import datetime
 import sys
 import pyttsx3
-
-
+import re
 
 ai_name = "PyBuddy"
 ai_cou = ": "
@@ -15,8 +14,8 @@ ai_print = ai_name + ai_cou
 greeted_first = False
 greeted_first_second = False
 sent = False
-send_first_greet = random.randint(1,2)
 greeting_done = False
+send_first_greet = random.randint(1,2)
 
 def speek(chatbot):
     engine = pyttsx3.init()
@@ -73,6 +72,14 @@ def tell_time(user):
             print(ai_print + chatbot)
             speek(chatbot)
 
+def skip(user):
+    global greeted_first, greeted_first_second, sent, greeting_done
+    if user == "skip":
+        greeted_first = True
+        greeted_first_second = True
+        sent = True
+        greeting_done = True
+
 
 def exit(user):
 
@@ -82,7 +89,11 @@ def exit(user):
         sys.exit()
 
 
-def times(user):
-    if user in words.comands["times"]:
-        a,b = user.split()
-        print(user)
+def math(user):
+    if any(word in user.lower() for word in words.comands["math"]):
+        if any(word in user.lower() for word in "time"):
+            a, b = re.findall(r'-?\d+\.?\d*', user)
+            a, b = [float(num) for num in [a,b]]
+
+            print(a,b)
+            print(a*b)
