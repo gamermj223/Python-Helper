@@ -8,8 +8,15 @@ greetings = {
 }
 
 comands = {
+<<<<<<< HEAD
     "time": ["what is the time", "what time it is", "do you know what time it is"],
     "time_respond_words1": ["do you know"],
     "time_respond1": ["I do know what time it is,", "I do happenin to have the time on me,"],
     "times": ["what is", "times"]
+=======
+    "time": ["what is the time", "what time is it"],
+    "time_respond_words1": ["do you know"],
+    "time_respond1": ["I do know what time it is,"],
+    "math": ["what is", "times"]
+>>>>>>> db0ee3e7035b0185bfed887265e89bdb94d0d109
 }
