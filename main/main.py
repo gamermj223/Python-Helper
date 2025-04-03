@@ -2,6 +2,7 @@ import commands
 import random
 import words
 import speech_recognition as sr
+import asyncio
 
 recognizer = sr.Recognizer()
 
@@ -11,13 +12,11 @@ ai_name = "PyBuddy"
 ai_cou = ": "
 user = ""
 
+t = 2
+
 running1 = True
 
-
-while running:
-    
-    commands.ai_greeting_first()
-
+def speak(user):
 
     with sr.Microphone() as source:
         recognizer.adjust_for_ambient_noise(source)
@@ -35,6 +34,13 @@ while running:
     except sr.RequestError as e:
         print("Error with the Speech API; {0}".format(e))
 
+while running:
+    commands.ai_greeting_first()
+    if t == 1:
+        speak()
+    elif t == 2:
+        user = input("You: ")
+        
     commands.greeting_responded(user)
     commands.user_greeting_first(user)
     commands.tell_time(user)

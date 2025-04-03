@@ -5,8 +5,6 @@ from datetime import datetime
 import sys
 import pyttsx3
 
-
-
 ai_name = "PyBuddy"
 ai_cou = ": "
 user = ""
@@ -61,7 +59,7 @@ def ai_greeting_first():
         greeted_first_second = True
 
 def tell_time(user):
-    global greeting_done, now
+    global greeting_done
     if greeting_done == True and any(word in user.lower() for word in words.comands["time"]):
         current = datetime.now().strftime("%I:%M %p")
         if any(word in user.lower() for word in words.comands["time_respond_words1"]):
