@@ -84,4 +84,5 @@ def exit(user):
 
 def times(user):
     if user in words.comands["times"]:
-        print("yes")
+        a,b = user.split()
+        print(user)
