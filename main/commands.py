@@ -4,10 +4,7 @@ import time
 from datetime import datetime
 import sys
 import pyttsx3
-<<<<<<< HEAD
-=======
 import re
->>>>>>> db0ee3e7035b0185bfed887265e89bdb94d0d109
 
 ai_name = "PyBuddy"
 ai_cou = ": "
@@ -18,7 +15,7 @@ greeted_first = False
 greeted_first_second = False
 sent = False
 greeting_done = False
-send_first_greet = random.randint(1,2)
+send_first_greet = random.randint(2,2)
 
 def speek(chatbot):
     engine = pyttsx3.init()
@@ -83,7 +80,6 @@ def skip(user):
         sent = True
         greeting_done = True
 
-
 def exit(user):
 
     if user == "exit":
@@ -91,12 +87,17 @@ def exit(user):
         print(ai_print + "exiting the program")
         sys.exit()
 
-
 def math(user):
-    if any(word in user.lower() for word in words.comands["math"]):
-        if any(word in user.lower() for word in "time"):
+    if any(word in user.lower() for word in words.math_commands["math"]):
+        if any(word in user.lower() for word in words.math_commands["times"]):
             a, b = re.findall(r'-?\d+\.?\d*', user)
             a, b = [float(num) for num in [a,b]]
+            a, b = (int(a), int(b)) if a.is_integer() and b.is_integer() else (a, b)
 
-            print(a,b)
             print(a*b)
+
+        if any(word in user.lower() for word in words.math_commands["plus"]):
+            a, b = re.findall(r'-?\d+\.?\d*', user)
+            a, b = [float(num) for num in [a,b]]
+            a, b = (int(a), int(b)) if a.is_integer() and b.is_integer() else (a, b)
+            print(a + b)
