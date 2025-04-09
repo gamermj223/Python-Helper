@@ -17,5 +17,6 @@ comands = {
 math_commands = {
     "math": ["what is", "times"],
     "times": ["times", "x", "*"],
-    "plus": ["+", "plus"]
+    "plus": ["+", "plus"],
+    "dived": ["/"]
 }
